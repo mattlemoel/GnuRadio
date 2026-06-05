@@ -1,0 +1,408 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: Kiwi/Kikiwi telemetry FM front-end
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: kiwi_fm_rx
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Kiwi FM RX
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 8
+    - 8
+    rotation: 0
+    state: enabled
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '1024000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 200
+    - 12
+    rotation: 0
+    state: enabled
+- name: center_freq
+  id: variable
+  parameters:
+    comment: ''
+    value: 137.950e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 320
+    - 12
+    rotation: 0
+    state: enabled
+- name: audio_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 460
+    - 12
+    rotation: 0
+    state: enabled
+- name: nbfm_bw
+  id: variable
+  parameters:
+    comment: ''
+    value: '12500'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 580
+    - 12
+    rotation: 0
+    state: enabled
+- name: decim
+  id: variable
+  parameters:
+    comment: ''
+    value: int(samp_rate // (nbfm_bw * 8))
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 700
+    - 12
+    rotation: 0
+    state: enabled
+- name: chan_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: samp_rate / decim
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 860
+    - 12
+    rotation: 0
+    state: enabled
+- name: rf_gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '40'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 200
+    - 80
+    rotation: 0
+    state: enabled
+- name: ppm
+  id: variable
+  parameters:
+    comment: ''
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 280
+    - 80
+    rotation: 0
+    state: enabled
+- name: sync
+  id: variable
+  parameters:
+    comment: ''
+    value: '''unknown_pps'''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 360
+    - 80
+    rotation: 0
+    state: enabled
+- name: osmosdr_source_0
+  id: osmosdr_source
+  parameters:
+    affinity: ''
+    alias: ''
+    ant0: ''
+    args: ''''''
+    bb_gain0: '20'
+    bw0: '0'
+    clock_source0: ''
+    comment: ''
+    corr0: ppm
+    dc_offset_mode0: '0'
+    freq0: center_freq
+    gain0: rf_gain
+    gain_mode0: 'False'
+    if_gain0: '20'
+    iq_balance_mode0: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    num_mboards: '1'
+    sample_rate: samp_rate
+    sync: sync
+    time_source0: ''
+    type: fc32
+    ant1: ''
+    bb_gain1: '20'
+    bw1: '0'
+    clock_source1: ''
+    corr1: '0'
+    dc_offset_mode1: '0'
+    freq1: 100e6
+    gain1: '10'
+    gain_mode1: 'False'
+    if_gain1: '20'
+    iq_balance_mode1: '0'
+    time_source1: ''
+    ant2: ''
+    bb_gain2: '20'
+    bw2: '0'
+    clock_source2: ''
+    corr2: '0'
+    dc_offset_mode2: '0'
+    freq2: 100e6
+    gain2: '10'
+    gain_mode2: 'False'
+    if_gain2: '20'
+    iq_balance_mode2: '0'
+    time_source2: ''
+    ant3: ''
+    bb_gain3: '20'
+    bw3: '0'
+    clock_source3: ''
+    corr3: '0'
+    dc_offset_mode3: '0'
+    freq3: 100e6
+    gain3: '10'
+    gain_mode3: 'False'
+    if_gain3: '20'
+    iq_balance_mode3: '0'
+    time_source3: ''
+    ant4: ''
+    bb_gain4: '20'
+    bw4: '0'
+    clock_source4: ''
+    corr4: '0'
+    dc_offset_mode4: '0'
+    freq4: 100e6
+    gain4: '10'
+    gain_mode4: 'False'
+    if_gain4: '20'
+    iq_balance_mode4: '0'
+    time_source4: ''
+    ant5: ''
+    bb_gain5: '20'
+    bw5: '0'
+    clock_source5: ''
+    corr5: '0'
+    dc_offset_mode5: '0'
+    freq5: 100e6
+    gain5: '10'
+    gain_mode5: 'False'
+    if_gain5: '20'
+    iq_balance_mode5: '0'
+    time_source5: ''
+    ant6: ''
+    bb_gain6: '20'
+    bw6: '0'
+    clock_source6: ''
+    corr6: '0'
+    dc_offset_mode6: '0'
+    freq6: 100e6
+    gain6: '10'
+    gain_mode6: 'False'
+    if_gain6: '20'
+    iq_balance_mode6: '0'
+    time_source6: ''
+    ant7: ''
+    bb_gain7: '20'
+    bw7: '0'
+    clock_source7: ''
+    corr7: '0'
+    dc_offset_mode7: '0'
+    freq7: 100e6
+    gain7: '10'
+    gain_mode7: 'False'
+    if_gain7: '20'
+    iq_balance_mode7: '0'
+    time_source7: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 40
+    - 200
+    rotation: 0
+    state: enabled
+- name: freq_xlating_fir_filter_xxx_0
+  id: freq_xlating_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: '0'
+    comment: ''
+    decim: decim
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    taps: firdes.low_pass(1.0, samp_rate, nbfm_bw, nbfm_bw/4)
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 280
+    - 188
+    rotation: 0
+    state: enabled
+- name: analog_quadrature_demod_cf_0
+  id: analog_quadrature_demod_cf
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    gain: chan_rate / (2*3.14159*2500)
+    maxoutbuf: '0'
+    minoutbuf: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 560
+    - 204
+    rotation: 0
+    state: enabled
+- name: rational_resampler_xxx_0
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: int(chan_rate)
+    fbw: '0'
+    interp: int(audio_rate)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: '[]'
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 780
+    - 204
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '0.8'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 1000
+    - 220
+    rotation: 0
+    state: enabled
+- name: blocks_wavfile_sink_0
+  id: blocks_wavfile_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    bits_per_sample1: FORMAT_PCM_16
+    comment: ''
+    file: kiwi_audio.wav
+    format: FORMAT_WAV
+    nchan: '1'
+    samp_rate: audio_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate:
+    - 1180
+    - 204
+    rotation: 0
+    state: enabled
+connections:
+- - osmosdr_source_0
+  - '0'
+  - freq_xlating_fir_filter_xxx_0
+  - '0'
+- - freq_xlating_fir_filter_xxx_0
+  - '0'
+  - analog_quadrature_demod_cf_0
+  - '0'
+- - analog_quadrature_demod_cf_0
+  - '0'
+  - rational_resampler_xxx_0
+  - '0'
+- - rational_resampler_xxx_0
+  - '0'
+  - blocks_multiply_const_vxx_0
+  - '0'
+- - blocks_multiply_const_vxx_0
+  - '0'
+  - blocks_wavfile_sink_0
+  - '0'
+metadata:
+  file_format: 1
+  grc_version: 3.10.1.1
