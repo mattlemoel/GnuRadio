@@ -94,7 +94,7 @@ except ImportError:
 #  ---------------------
 #  A adapter selon le materiel et la configuration de l'emetteur.
 # =============================================================================
-CENTER_FREQ = 137.950e6   # frequence d'emission (ou 138.500e6 selon config)
+CENTER_FREQ = 869.500e6   # Kikiwi 868 MHz : bande 869,40-869,65 MHz (A CALER)
 SAMP_RATE   = 1_024_000   # debit d'echantillonnage du RTL-SDR (Hz)
 AUDIO_RATE  = 48_000      # debit audio en sortie (= entree du decodeur)
 NBFM_BW     = 15_000      # canal NBFM (Hz) ; canalisation 25 kHz en 868
